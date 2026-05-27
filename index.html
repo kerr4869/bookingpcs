@@ -505,27 +505,7 @@
   .ticket-action-bar{padding-bottom:env(safe-area-inset-bottom);}
   .ticket-action-btn{min-height:44px;touch-action:manipulation;}
 
-  .ticket.export-mode{
-    width:1200px!important;
-    height:470px!important;
-    aspect-ratio:auto!important;
-    grid-template-columns:minmax(0,1.42fr) 28px minmax(0,.98fr)!important;
-    border-radius:34px!important;
-  }
-  .ticket.export-mode .ticket-top{padding:38px!important;}
-  .ticket.export-mode .ticket-bottom{padding:38px 38px 20px!important;}
-  .ticket.export-mode .ticket-footer{padding:8px 38px 28px!important;}
-  .ticket.export-mode .ticket-name{font-size:38px!important;}
-  .ticket.export-mode .ticket-logo{height:48px!important;max-width:94px!important;}
-  .ticket.export-mode .ticket-id-label{font-size:11px!important;}
-  .ticket.export-mode .ticket-id-val{font-size:16px!important;}
-  .ticket.export-mode .ticket-phone{font-size:15px!important;}
-  .ticket.export-mode .ticket-info-item .ti-label{font-size:11px!important;}
-  .ticket.export-mode .ticket-info-item .ti-val{font-size:19px!important;}
-  .ticket.export-mode .ticket-date-pill{font-size:15px!important;padding:8px 18px!important;}
-  .ticket.export-mode .ticket-summary-row{font-size:16px!important;}
-  .ticket.export-mode .ticket-summary-row .ts-val.big{font-size:36px!important;}
-  .ticket.export-mode .ticket-slip-thumb{width:64px!important;height:64px!important;}
+
 
   @media (min-width:901px){
     .modal-backdrop.show{align-items:center;justify-content:center;}
@@ -1870,6 +1850,71 @@
   .calendar-badge{display:inline-flex;align-items:center;height:18px;padding:0 8px;border-radius:999px;background:#eaf2ff;color:#1f5edf;font-size:10px;font-weight:900;margin-left:6px;letter-spacing:.04em;}
   @media(max-width:600px){.booking-calendar-line{grid-template-columns:1fr}.calendar-add-btn{width:100%;}.selected-date-list{min-height:46px}.selected-date-chip{height:32px;font-size:12px;}}
 
+
+  /* ═══════════════════════════════
+     EXPORT-MODE: PNG บันทึก — แนวตั้ง + สีตายตัว (ต้องอยู่ท้ายสุดเพื่อ override)
+  ═══════════════════════════════ */
+  .ticket.export-mode{
+    width:560px!important;height:auto!important;min-height:0!important;
+    aspect-ratio:auto!important;display:flex!important;flex-direction:column!important;
+    grid-template-columns:unset!important;grid-template-rows:unset!important;
+    border-radius:28px!important;contain:none!important;
+  }
+  .ticket.export-mode .ticket-top{
+    grid-column:unset!important;grid-row:unset!important;padding:28px 28px 22px!important;
+    background:radial-gradient(circle at 84% 8%,rgba(71,169,255,.22),transparent 34%),radial-gradient(circle at 12% 100%,rgba(124,58,237,.16),transparent 38%),linear-gradient(160deg,#0b1020 0%,#151b31 58%,#0b0c14 100%)!important;
+  }
+  .ticket.export-mode .ticket-tear{
+    grid-column:unset!important;grid-row:unset!important;
+    flex-direction:row!important;width:100%!important;height:26px!important;
+    background:#0d1020!important;
+  }
+  .ticket.export-mode .ticket-tear .tear-line{
+    width:100%!important;height:0!important;flex:1!important;
+    border-left:none!important;border-top:1.5px dashed rgba(255,255,255,.18)!important;
+  }
+  .ticket.export-mode .ticket-tear .tear-circle{
+    width:22px!important;height:22px!important;
+    margin-top:0!important;margin-bottom:0!important;
+  }
+  .ticket.export-mode .ticket-bottom{
+    grid-column:unset!important;grid-row:unset!important;
+    padding:22px 28px 16px!important;flex:1!important;
+    background:linear-gradient(180deg,#0d0f15 0%,#090a0f 100%)!important;
+  }
+  .ticket.export-mode .ticket-footer{
+    grid-column:unset!important;grid-row:unset!important;
+    padding:6px 28px 20px!important;background:#090a0f!important;
+  }
+  .ticket.export-mode .ticket-name{font-size:30px!important;-webkit-line-clamp:unset!important;overflow:visible!important;}
+  .ticket.export-mode .ticket-logo{height:44px!important;max-width:88px!important;}
+  .ticket.export-mode .ticket-id-label{font-size:10px!important;}
+  .ticket.export-mode .ticket-id-val{font-size:14px!important;}
+  .ticket.export-mode .ticket-phone{font-size:13px!important;}
+  .ticket.export-mode .ticket-info-grid{grid-template-columns:repeat(3,1fr)!important;}
+  .ticket.export-mode .ticket-info-item{
+    background:#1e2440!important;
+    border:1px solid rgba(255,255,255,.14)!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+    box-shadow:none!important;
+  }
+  .ticket.export-mode .ticket-info-item .ti-label{font-size:10px!important;color:rgba(255,255,255,.52)!important;}
+  .ticket.export-mode .ticket-info-item .ti-val{font-size:17px!important;color:#fff!important;}
+  .ticket.export-mode .ticket-date-pill{
+    font-size:13px!important;padding:6px 14px!important;
+    background:#1a3a5c!important;
+    border:1px solid rgba(91,182,255,.4)!important;
+    color:#b6e2ff!important;
+    backdrop-filter:none!important;box-shadow:none!important;
+  }
+  .ticket.export-mode .ticket-summary-row{font-size:14px!important;}
+  .ticket.export-mode .ticket-summary-row .ts-val.big{font-size:28px!important;}
+  .ticket.export-mode .ticket-slip-row{
+    background:#13151e!important;
+    border:1px solid rgba(255,255,255,.08)!important;
+    backdrop-filter:none!important;-webkit-backdrop-filter:none!important;
+  }
+  .ticket.export-mode .ticket-slip-thumb{width:52px!important;height:52px!important;}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
 </head>
@@ -2481,7 +2526,7 @@ function openTicket(idx){
 
   // dates pills
   const pillWrap = document.getElementById('tk-dates');
-  pillWrap.innerHTML = dArr.map(d=>'<span class="ticket-date-pill">วันที่ '+d.trim()+(ticketMonthLabel ? ' '+ticketMonthLabel : '')+'</span>').join('');
+  pillWrap.innerHTML = dArr.map(d=>'<span class="ticket-date-pill">วันที่ '+d.trim()+'</span>').join('');
 
   // note
   const noteRow=document.getElementById('tk-note-row');
@@ -2539,8 +2584,8 @@ async function renderTicketCanvas(){
       useCORS:true,
       allowTaint:true,
       logging:false,
-      windowWidth:960,
-      windowHeight:1400
+      windowWidth:620,
+      windowHeight:1200
     });
   }finally{
     pack.holder.remove();
